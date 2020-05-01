@@ -1,0 +1,7 @@
+# specific tools stuff to ignore
+
+# ignores the love binary, you need to set this up to be 
+# the correct binary for your project.
+# the vscode run command is expecting that we have love in 
+# accessible in tools/love/love with that last love being the executable.
+/love

@@ -1,0 +1,22 @@
+# older code, stuff that shouldn't be here anytmore
+# just a convention i use when refactoring, adding
+# older stuff for reference
+_*
+*/_*
+*/*-old
+*-old
+
+# some vscode workspace file, this stuff is usually just
+# local and no need to share it or track the changes.
+*.code-workspace
+
+# ignores raw assets & binairies
+/.assets/
+/assets/
+/tmp/
+/bin/
+
+# ignores notes, these are markdown files i use locally to track
+# progress and write out commits while i'm working on them.
+commit.md
+notes.md
