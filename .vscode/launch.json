@@ -7,7 +7,7 @@
         {
             "type": "lua-local",
             "request": "launch",
-            "name": "Debug LÖVE",
+            "name": "Debug LÖVE Game",
             "program": {
                 "command": "love"
             },

@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        "**/.assets": true,
+        "**/libs" : true, // hides this folder so I don't accidently edit them.
+    }
+}

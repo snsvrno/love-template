@@ -18,17 +18,21 @@ local function getExtension(filepath)
     return string.match(filepath, "^.+[/\\].+%.(.+)$")
 end
 
-local function getFiles(path)
-end
-
-local function getApplicableFiles(path)
+local function getApplicableFiles(path, fileExtensions)
     -- gets a list of all the files that should be processed for backup.
     local foundFiles = { }
 
     for file in lfs.dir(path) do
         local fullPath = path .. "/" .. file
         if lfs.attributes(fullPath, "mode") == "file" then
-            table.insert(foundFiles, fullPath)
+            -- checks if this file we found is the same as the 
+            -- listed extensions.
+            for _,ext in pairs(fileExtensions) do
+                local thisExt = getExtension(fullPath)
+                if ext == thisExt then
+                    table.insert(foundFiles, fullPath)
+                end
+            end
         elseif file ~= "." and file ~= ".." and lfs.attributes(fullPath, "mode") == "directory" then
             local subfolder = getApplicableFiles(fullPath)
             for _,sub in pairs(subfolder) do
@@ -79,7 +83,7 @@ local function store(args)
 
     local filesCurrentlyLoaded = { }
 
-    local filesToProcess = getApplicableFiles(args.watch)
+    local filesToProcess = getApplicableFiles(args.watch, args.files)
     for _, file in pairs(filesToProcess) do
         -- gets the hash
         local hash = generateHash(file)

@@ -10,7 +10,21 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "package as .love",
+            "type": "shell",
+            "command": "lua tools/scripts/package.lua ${relativeFileDirname}",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "install git hooks",
+            "type": "shell",
+            "command": "lua tools/scripts/installGitHooks.lua",
+            "group": "build",
         }
     ]
 }
